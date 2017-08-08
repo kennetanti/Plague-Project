@@ -5,6 +5,8 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "CustomBpNode.generated.h"
 
+class UCrowdFollowingComponent;
+
 /**
  * 
  */
@@ -17,4 +19,7 @@ class COMBATSYSTEM_API UCustomBpNode : public UBlueprintFunctionLibrary
 	
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Action Mappings Key"), Category = "MyBlueprintNode")
 		static void GetActionMappingsKey(const  FName _ActionName, bool &_Success, TArray<FKey> &_Keys);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Set Crowd Obstacle Avoidance"), Category = "MyBlueprintNode")
+		static void SetCrowdObstacleAvoidance(UCrowdFollowingComponent* crowdComponent, bool bEnable);
 };

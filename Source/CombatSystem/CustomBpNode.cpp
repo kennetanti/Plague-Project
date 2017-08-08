@@ -2,6 +2,7 @@
 
 #include "CombatSystem.h"
 #include "CustomBpNode.h"
+#include "Navigation/CrowdFollowingComponent.h"
 
 INT32 UCustomBpNode::OneLeftShift(INT32 flag)
 {
@@ -21,6 +22,13 @@ void UCustomBpNode::GetActionMappingsKey(const  FName _ActionName, bool &_Succes
 			_Keys.Add(Each.Key);
 		}
 	}
+}
+
+void UCustomBpNode::SetCrowdObstacleAvoidance(UCrowdFollowingComponent* crowdComponent, bool bEnable)
+{
+	crowdComponent->SetCrowdObstacleAvoidance(bEnable);
+	crowdComponent->IsCrowdSlowdownAtGoalEnabled();
+	//GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Red, crowdComponent->IsCrowdSlowdownAtGoalEnabled());
 }
 
 
