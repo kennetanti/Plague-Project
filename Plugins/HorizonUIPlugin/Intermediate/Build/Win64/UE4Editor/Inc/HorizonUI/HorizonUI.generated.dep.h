@@ -8,6 +8,9 @@
 #ifndef HORIZONUI_HorizonButton_generated_h
 	#include "Public/Horizon/Widget/HorizonButton.h"
 #endif
+#ifndef HORIZONUI_HorizonDialogueStyleInfo_generated_h
+	#include "Public/Horizon/Widget/HorizonDialogueStyleInfo.h"
+#endif
 #ifndef HORIZONUI_HorizonDialogueMsgTextBlock_generated_h
 	#include "Public/Horizon/Widget/HorizonDialogueMsgTextBlock.h"
 #endif

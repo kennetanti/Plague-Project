@@ -50,8 +50,12 @@ public:
 
 
 	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|FileSystem", meta = (Keywords = "LoadFont"))
-		UFont* LoadFont(const FString& packageFilePath);
+		USoundBase* LoadSound(const FString& packageFilePath);
 
+
+
+	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|FileSystem", meta = (Keywords = "LoadSound"))
+		UFont* LoadFont(const FString& packageFilePath);
 
 	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|FileSystem", meta = (Keywords = "LoadUAsset"))
 		UObject* LoadUAsset(const FString& packageFilePath);

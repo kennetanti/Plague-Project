@@ -10,6 +10,7 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 class UObject;
 class UFont;
+class USoundBase;
 class UWorld;
 class UUserWidget;
 class UMaterial;
@@ -21,7 +22,7 @@ class UHorizonFileSystem;
 #endif
 #define HORIZONUI_HorizonFileSystem_generated_h
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_RPC_WRAPPERS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_RPC_WRAPPERS \
  \
 	DECLARE_FUNCTION(execLoadUAsset) \
 	{ \
@@ -38,6 +39,15 @@ class UHorizonFileSystem;
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		*(UFont**)Z_Param__Result=this->LoadFont(Z_Param_packageFilePath); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execLoadSound) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_packageFilePath); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(USoundBase**)Z_Param__Result=this->LoadSound(Z_Param_packageFilePath); \
 		P_NATIVE_END; \
 	} \
  \
@@ -123,7 +133,7 @@ class UHorizonFileSystem;
 	}
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
  \
 	DECLARE_FUNCTION(execLoadUAsset) \
 	{ \
@@ -140,6 +150,15 @@ class UHorizonFileSystem;
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		*(UFont**)Z_Param__Result=this->LoadFont(Z_Param_packageFilePath); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execLoadSound) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_packageFilePath); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(USoundBase**)Z_Param__Result=this->LoadSound(Z_Param_packageFilePath); \
 		P_NATIVE_END; \
 	} \
  \
@@ -225,7 +244,7 @@ class UHorizonFileSystem;
 	}
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_INCLASS_NO_PURE_DECLS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUHorizonFileSystem(); \
 	friend HORIZONUI_API class UClass* Z_Construct_UClass_UHorizonFileSystem(); \
@@ -237,7 +256,7 @@ public: \
 
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_INCLASS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_INCLASS \
 private: \
 	static void StaticRegisterNativesUHorizonFileSystem(); \
 	friend HORIZONUI_API class UClass* Z_Construct_UClass_UHorizonFileSystem(); \
@@ -249,7 +268,7 @@ public: \
 
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_STANDARD_CONSTRUCTORS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UHorizonFileSystem(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UHorizonFileSystem) \
@@ -262,7 +281,7 @@ private: \
 public:
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_ENHANCED_CONSTRUCTORS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UHorizonFileSystem(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -275,32 +294,32 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UHorizonFileSystem); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UHorizonFileSystem)
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_PRIVATE_PROPERTY_OFFSET
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_13_PROLOG
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_GENERATED_BODY_LEGACY \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_PRIVATE_PROPERTY_OFFSET
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_13_PROLOG
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_PRIVATE_PROPERTY_OFFSET \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_RPC_WRAPPERS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_INCLASS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_STANDARD_CONSTRUCTORS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_PRIVATE_PROPERTY_OFFSET \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_RPC_WRAPPERS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_INCLASS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_GENERATED_BODY \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_PRIVATE_PROPERTY_OFFSET \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_INCLASS_NO_PURE_DECLS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_ENHANCED_CONSTRUCTORS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_PRIVATE_PROPERTY_OFFSET \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_INCLASS_NO_PURE_DECLS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h
+#define CURRENT_FILE_ID CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_FileSystem_HorizonFileSystem_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

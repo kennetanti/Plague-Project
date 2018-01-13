@@ -35,4 +35,10 @@ public:
 		const FName& animeName);
 
 
+
+	static int FindCharIndexFromStr(int startIndex, TCHAR aChar, const FString& str);
+	static int FindCharIndexFromStr(int startIndex, const TArray<TCHAR>& charList, const FString& str);
+
+
+	static FString NormalizeBlueprintClassFilePath(const FString& filePath);
 };

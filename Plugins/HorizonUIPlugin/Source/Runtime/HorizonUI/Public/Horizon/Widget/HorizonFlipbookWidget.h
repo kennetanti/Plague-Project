@@ -13,9 +13,6 @@ class HORIZONUI_API UHorizonFlipbookWidget :
 	public FTickableGameObject
 {
 	GENERATED_BODY()
-
-	UHorizonFlipbookWidget();
-	virtual ~UHorizonFlipbookWidget();
 public:
 
 
@@ -49,9 +46,7 @@ public:
 	virtual void SynchronizeProperties() override;
 	//~ End UWidget Interface
 
-	/** The color of the text */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Appearance)
-		FSlateColor ColorAndOpacity;
+
 protected:
 	//~ Begin UWidget Interface
 	virtual TSharedRef<SWidget> RebuildWidget() override;
@@ -78,6 +73,11 @@ public:
 	void SetFlipbookSourceUV(const TArray<FVector2D>& sourceUV) { SourceUV = sourceUV; };
 	void SetFlipbookSourceSize(const TArray<FVector2D>& sourceSize) { SourceSize = sourceSize; };
 
+
+	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Appearance")
+	void SetFlipbookSource(const TArray<FVector2D>& sourceUV, const TArray<FVector2D>& sourceSize);
+
+
 	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Behavior")
 	void ResetAnimation();
 	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Behavior")
@@ -95,30 +95,34 @@ public:
 private:
 	void SetCurrentImage(float currentDuration);
 public:
+
+	/** The color of the text */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Appearance)
+	FSlateColor ColorAndOpacity = FLinearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Behavior")
-		bool bIsStartTick;
+	bool bIsStartTick = true;
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Behavior")
-		int NumOfLoop;
+	int NumOfLoop = 0;
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Brush", meta = (DisplayThumbnail = "true", DisplayName = "PaperFlipbook", AllowedClasses = "PaperFlipbook"))
-		UPaperFlipbook* PaperFlipbook;
+	UPaperFlipbook* PaperFlipbook = nullptr;
 
 
 
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Brush)
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Brush")
-		TArray<FVector2D> SourceUV;
+	TArray<FVector2D> SourceUV;
 
 	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Brush)
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Brush")
-		TArray<FVector2D> SourceSize;
+	TArray<FVector2D> SourceSize;
 
 private:
 	TWeakObjectPtr<UHorizonImage> ImageWeakPtr; //for showing current image
-	float CurrentDuration;
-	int CurrentNumOfLoop;
+	float CurrentDuration = 0.0f;
+	int CurrentNumOfLoop = 0;
 
     //float AnimationDeltaTime;
 };

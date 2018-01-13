@@ -1,6 +1,7 @@
 {
-	"Changelist" : 3452394,
-	"BuildId" : "3b4a7172-9407-4d67-93ef-2f9e6ae50c92",
+	"Changelist" : 3561208,
+	"CompatibleChangelist" : 3452394,
+	"BuildId" : "e4375421-a13d-487b-9d62-7914ec38c04a",
 	"Modules" : 
 	{
 		"HorizonUI" : "UE4Editor-HorizonUI.dll"

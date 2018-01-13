@@ -7,43 +7,42 @@
 #include "CanvasPanel.h"
 #include "TextLayout.h"
 #include "Tickable.h"
+#include "HorizonButton.h"
+#include "HorizonDialogueStyleInfo.h"
+#include "DelegateCombinations.h"
 #include "HorizonDialogueMsgTextBlock.generated.h"
 
-class FXmlNode;
 
-class UHorizonFlipbookWidget;
-class UPaperFlipbook;
-class UTexture2D;
-class UMaterial;
 USTRUCT()
-struct FHorizonDialogueBlockInfo {
+struct FHorizonDialogueBlockInfo 
+{
 	GENERATED_BODY()
-	FHorizonDialogueBlockInfo()
-	: CurrentCharIndex(0)
-	, SegmentReferenceIndex(-1){};
-
+public:
 	FString MsgText;
 	TWeakObjectPtr<UWidget> WidgetWeakPtr;
-	int CurrentCharIndex;
-	int SegmentReferenceIndex;//index ref to TArray<FHorizonDialogueSegmentInfo> DialogueSegmentInfoList
+	TWeakObjectPtr<UWidget> WidgetBackgroundWeakPtr;
+	int CurrentCharIndex = 0;
+	int SegmentReferenceIndex = -1;//index ref to TArray<FHorizonDialogueSegmentInfo> DialogueSegmentInfoList
 	FName Name;
 	FVector2D BlockSize;
+
+
+	UPROPERTY()
+	USoundBase* DialogueSound = nullptr;
+	bool bDialogueSoundPlayed = false;
 
 };
 
 USTRUCT()
-struct FHorizonDialogueLineInfo{
+struct FHorizonDialogueLineInfo
+{
 	GENERATED_BODY()
-		FHorizonDialogueLineInfo()
-		: CurrentDialogueBlockIndex(0)
-		, MaxLineHeight(0)
-		, LineWidth(0)
-		, Position(0, 0){};
-	int CurrentDialogueBlockIndex;
-	int MaxLineHeight;
-	int LineWidth;
+public:
+	int CurrentDialogueBlockIndex = 0;
+	int MaxLineHeight = 0;
+	int LineWidth = 0;
 	TArray<FHorizonDialogueBlockInfo> DialogueBlockInfoList;
-	FVector2D Position;
+	FVector2D Position = FVector2D(0, 0);
 };
 
 
@@ -55,104 +54,122 @@ enum class EHorizonDialogueSegmentType :uint8
 	NewLine,
 	Image,
 	PaperFlipbook,
-	Material
+	Material,
+	HyperText
 };
+
+
+
+UENUM(BlueprintType)
+enum class EHorizonDialogueTextOverflowWarpMethod :uint8
+{
+	Normal,    // Try get a "word"(use space to determine, for both CJK and non-CJK) and check if can place at current line, if not, move to next line and use BreakAll rule in next line for the "word"
+	BreakAll, //  break all word at any place
+};
+
 
 // Parse text segment and store it tag info, 
 // If no supported tag in input text, then there will have only one segment.
 USTRUCT()
 struct FHorizonDialogueSegmentInfo {
-
-
 	GENERATED_BODY()
-		FHorizonDialogueSegmentInfo()
-		: TypeEnum(EHorizonDialogueSegmentType::Invalidated)
-		, DialogueMsgSpeed(0.01f)
-		, DialogueMsgWait(0)
-		, PaddingMargin(0,0,0,0)
-		, SegmentStyleReferenceIndex(-1)
-	{};
-	EHorizonDialogueSegmentType TypeEnum;
+	FHorizonDialogueSegmentInfo();
+
+public:
+	EHorizonDialogueSegmentType TypeEnum = EHorizonDialogueSegmentType::Invalidated;
 	FString Text;
 	FSlateColor ColorAndOpacity;
 	FSlateFontInfo Font;
 	FVector2D ShadowOffset;
 	FSlateColor ShadowColorAndOpacity;
 	//TEnumAsByte<ETextJustify::Type> Justification;
-	float DialogueMsgSpeed;
-	float DialogueMsgWait;
+	float DialogueMsgSpeed = 0.01f;
+	float DialogueMsgWait = 0.0f;
 	FMargin PaddingMargin;//padding position for segment
-	TOptional<FString> ImageFilePath;
+	TOptional<FString> FilePath;
+	TOptional<FString> DialogueSoundPath;
 	TOptional<FVector2D> ImageSize;
-	int SegmentStyleReferenceIndex;
+	TOptional<FString> HypertextReference;
+	FSlateColor HypertextHoveredColor = FLinearColor(1.0f, 0.0f, 0.0f, 1.0f); //color after clicked
+	FSlateColor HypertextVisitedColor = FLinearColor(0.5f, 0.0f, 0.5f, 1.0f); //color after clicked
+	TSubclassOf<UHorizonButton> BackgroundButtonClass;// = UHorizonButton::StaticClass();
+
+
+	int StyleInfoReferenceIndex = -1; //if not -1, will use style in SegmentStyleListFromStyleClass
+	int SegmentStyleReferenceIndex = -1;
+
+	bool bHypertextVisited = false;
+
+	float DialogueSoundVolumeMultiplier = 1.0f;
+	float DialogueSoundPitchMultiplier = 1.0f;
+	float DialogueSoundStartTime = 0.0f;
 
 };
-
 
 
 USTRUCT()
-struct FHorizonDialogueSegmentInfoStyle {
-
-
+struct FHorizonDialoguePageInfo
+{
 	GENERATED_BODY()
-	FHorizonDialogueSegmentInfoStyle() 
-		: Texture2D(nullptr)
-		, Material(nullptr)
-		, PaperFlipbook(nullptr)
-	{}
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-	FName StyleName;
-
-public: 
-	//Optional parameters. If not be set, will use parent's setting(or default)
-	//Because TOptional can't be acceee from blueprint, so use TArray instead, will use TArray::Last() if num of array larger than 0
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-	TArray<FString> Text;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-	TArray<FSlateColor> ColorAndOpacity;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-	TArray<FSlateFontInfo> Font;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-		TArray<int> FontSize;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-		TArray<FName> TypefaceFontName;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-	TArray<FVector2D> ShadowOffset;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-	TArray<FSlateColor> ShadowColorAndOpacity;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-	TArray<float> DialogueMsgSpeed;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-	TArray<float> DialogueMsgWait;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-	TArray<FMargin> PaddingMargin;//padding position for segment
-
-
-public: //for tag <img>, ignore case
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style", meta = (DisplayThumbnail = "true", AllowedClasses = "Texture2D"))
-	UTexture2D* Texture2D;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style", meta = (DisplayThumbnail = "true", AllowedClasses = "Material"))
-	UMaterial* Material;
-
-
-
-public: //for tag <pfb> or <PaperFlipBook>, ignore case
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style", meta = (DisplayThumbnail = "true", DisplayName = "PaperFlipbook", AllowedClasses = "PaperFlipbook"))
-	UPaperFlipbook* PaperFlipbook;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, AdvancedDisplay, Category = "HorizonPlugin|Style")
-	TArray<FVector2D> PaperFlipbookSourceUV;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, AdvancedDisplay, Category = "HorizonPlugin|Style")
-	TArray<FVector2D> PaperFlipbookSourceSize;
-
 public:
-	//image size for Texture2D, Material or PaperFlipbook
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
-		TArray<FVector2D> ImageSize; 
+	FHorizonDialoguePageInfo() {};
+	FHorizonDialoguePageInfo(int InStartLineIndex, int InEndLineIndex, float InPageHeight)
+	: StartLineIndex(InStartLineIndex)
+	, EndLineIndex(InEndLineIndex)
+	, PageHeight(InPageHeight){}
+public:
+	int StartLineIndex = -1;
+	int EndLineIndex = -1;
+	float PageHeight = 0.0f;
 };
+
+
+class UHorizonDialogueMsgTextBlock;
+USTRUCT(BlueprintType)
+struct FHorizonDialogueHypertextResult
+{
+	GENERATED_BODY()
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Hypertext")
+	UHorizonDialogueMsgTextBlock* DialogueMsgTextBlock = nullptr;
+
+	UPROPERTY(BlueprintReadOnly, Category = "HorizonPlugin|Hypertext")
+	int SegmentIndex = -1;
+
+	UPROPERTY(BlueprintReadOnly, Category = "HorizonPlugin|Hypertext")
+	int LineIndex = -1;
+
+	UPROPERTY(BlueprintReadOnly, Category = "HorizonPlugin|Hypertext")
+	int BlockIndex = -1;
+
+	UPROPERTY(BlueprintReadOnly, Category = "HorizonPlugin|Hypertext")
+	FString HypertextReference;
+	//HypertextReference parsed map
+	UPROPERTY(BlueprintReadOnly, Category = "HorizonPlugin|Hypertext")
+	TMap<FString, FString> UrlEncodeMap;
+};
+
+
+USTRUCT(BlueprintType)
+struct FHorizonDialogueSetDialoguePageResult
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY(BlueprintReadOnly, Category = "HorizonPlugin|DialogueMsgTextBlock")
+	int PageIndex = -1;
+};
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHorizonHypertextEvent, FHorizonDialogueHypertextResult, InResult);
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnHorizonHypertextEventNative, FHorizonDialogueHypertextResult);
+
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnHorizonDialogueMsgEvent);
+DECLARE_MULTICAST_DELEGATE(FOnHorizonDialogueMsgEventNative);
+
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnHorizonSetDialoguePageEvent, FHorizonDialogueSetDialoguePageResult, InResult);
+DECLARE_MULTICAST_DELEGATE_OneParam(FOnHorizonSetDialoguePageEventNative, FHorizonDialogueSetDialoguePageResult);
 
 
 UCLASS()
@@ -161,8 +178,9 @@ class HORIZONUI_API UHorizonDialogueMsgTextBlock :
 	public FTickableGameObject
 {
 	GENERATED_BODY()
-		UHorizonDialogueMsgTextBlock();
-	virtual ~UHorizonDialogueMsgTextBlock();
+public:
+	UHorizonDialogueMsgTextBlock();
+
 
 public:
 #if WITH_EDITOR
@@ -185,7 +203,7 @@ public:
 #endif
 protected://FTickableGameObject implement
 	virtual TStatId GetStatId() const override { RETURN_QUICK_DECLARE_CYCLE_STAT(UHorizonDialogueMsgTextBlock, STATGROUP_Tickables); }
-	virtual bool IsTickable() const override { return bIsStartTickDialogueMsg; }
+	virtual bool IsTickable() const override;
 	virtual void Tick(float DeltaTime) override;
 	virtual bool IsTickableInEditor() const override { return true; }
 public: //UText
@@ -245,8 +263,11 @@ public: //UText
 
 public:
 	/** The text to display */
-	UPROPERTY(EditAnywhere, Category = "HorizonPlugin|Content", meta = (MultiLine = "true"))
-		FText Text;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Content", meta = (MultiLine = "true"))
+	FText Text;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Content")
+		EHorizonDialogueTextOverflowWarpMethod TextOverFlowWarpMethod = EHorizonDialogueTextOverflowWarpMethod::Normal;
 
 	/** A bindable delegate to allow logic to drive the text of the widget */
 	UPROPERTY()
@@ -254,26 +275,24 @@ public:
 
 	/** The color of the text */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Appearance")
-		FSlateColor ColorAndOpacity;
+	FSlateColor ColorAndOpacity = FLinearColor::White;
+
 	/** The font to render the text with */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Appearance")
-		FSlateFontInfo Font;
+	FSlateFontInfo Font;
 
 	/** The direction the shadow is cast */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Appearance")
-		FVector2D ShadowOffset;
+	FVector2D ShadowOffset = FVector2D(1.0f, 1.0f);
 
 	/** The color of the shadow */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Appearance", meta = (DisplayName = "Shadow Color"))
-		FLinearColor ShadowColorAndOpacity;
+	FLinearColor ShadowColorAndOpacity = FLinearColor::Transparent;
 
-	/** The minimum desired size for the text */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Appearance", AdvancedDisplay)
-		float MinDesiredWidth;
 
 	/** If true, it will automatically wrap this text widget with an invalidation panel */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Performance", AdvancedDisplay)
-		bool bWrapWithInvalidationPanel;
+	bool bWrapWithInvalidationPanel = false;
 
 	///** Called when this text is double clicked */
 	//SLATE_EVENT(FOnClicked, OnDoubleClicked)
@@ -293,6 +312,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Widget", meta = (DisplayName = "SetText (Text)"))
 		void SetText(FText InText);
 
+	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Widget")
+		void SetTextAndRebuildDialogue(const FText& InText);
+
 	//~ Begin UWidget Interface
 	virtual void SynchronizeProperties() override;
 	//~ End UWidget Interface
@@ -302,21 +324,20 @@ public:
 	//~ End UVisual Interface
 
 
-
+	
 
 public:  // UTextLayoutWidget 
 
 
 		/** How the text should be aligned with the margin. */
 		UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Appearance)
-			TEnumAsByte<ETextJustify::Type> Justification;
+		TEnumAsByte<ETextJustify::Type> Justification;
 
 		/** The amount of blank space left around the edges of this text line. */
 		UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Appearance", AdvancedDisplay)
-			FMargin LineMargin;
+		FMargin LineMargin = FMargin(30, 10, 30, 5);
 
 		
-
 		/** margin for each line from canvas border */
 		//FVector2D LineMargin;
 
@@ -324,35 +345,30 @@ public:
 
 	/** if true, then try to parse Text xml tag*/
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Appearance")
-		bool bIsRichText;
-		void SetIsRichText(bool b);
+	bool bIsRichText = true;
+	void SetIsRichText(bool b);
 
 
 	/** millisecond for a word */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Behavior")
-		float DialogueMsgSpeed;
-		void SetDialogueMsgSpeed(float speed);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Behavior", meta = (EditCondition = "bIsDialogueMsgText"))
+	float DialogueMsgSpeed = 0.01f;
+	void SetDialogueMsgSpeed(float speed);
+	UPROPERTY()
+	bool bIsDialogueMsgText = false;
+	void SetIsDialogueMsgText(bool b);
 
-
-
-	/** bIsDialogueMsgText*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Behavior")
-		bool bIsDialogueMsgText;
-		void SetIsDialogueMsgText(bool b);
 	/** should we start tick dialogue*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Behavior")
-		bool bIsStartTickDialogueMsg;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Behavior", meta = (EditCondition = "bIsDialogueMsgText"))
+	bool bIsStartTickDialogueMsg = false;
 	void SetIsStartTickDialogueMsg(bool b);
 
-	/** should we start tick dialogue*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Behavior")
-		bool bIsRepeatDialogueMsg;
-		void SetIsRepeatDialogueMsg(bool b);
+	void SetIsRepeatDialogueMsg(bool b);
 
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Behavior")
-		float RepeatDialogueMsgInterval;
-		void SetRepeatDialogueMsgInterval(float interval);
+	UPROPERTY()
+	bool bIsRepeatDialogueMsg = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Behavior", meta = (EditCondition = "bIsRepeatDialogueMsg"))
+	float RepeatDialogueMsgInterval = 1.0f;
+	void SetRepeatDialogueMsgInterval(float interval);
 
 
 	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Behavior")
@@ -360,10 +376,34 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Behavior")
 	virtual void StartDialogue();
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "HorizonPlugin|Style")
-		TArray<FHorizonDialogueSegmentInfoStyle> SegmentStyleList;
 
 
+	//Load SegmentStyles from seperate UHorizonDialogueStyleInfo class
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
+	TArray<TSubclassOf<UHorizonDialogueStyleInfo>> StyleInfoClassList;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Style")
+	TArray<FHorizonDialogueSegmentInfoStyle> SegmentStyleList;
+
+
+	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Behavior")
+	virtual void NextDialogueMsgPage();
+	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Behavior")
+	FORCEINLINE int GetCurrentPageIndex() { return CurrentPageIndex; };
+	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Behavior")
+	virtual void SetDialogueMsgPage(int Page);
+
+	// Note: if false, user should call NextDialogueMsgPage or SetDialogueMsgPage in order to proceed to next page.
+	UPROPERTY()
+	bool bAutoNextDialogueMsgPage = true;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category = "HorizonPlugin|Behavior", meta = (EditCondition = "bAutoNextDialogueMsgPage"))
+	float AutoNextDialogueMsgPageInterval = 1.0f;
+private:
+	float AutoNextDialogueMsgPageDeltaTime = 0.0f;
+private:
+	UPROPERTY()
+	TArray<UHorizonDialogueStyleInfo*> StyleInfoList;
+	
 public:
 
 
@@ -381,22 +421,42 @@ public:
 
 	FORCEINLINE TArray<FHorizonDialogueSegmentInfo>& GetDialogueSegmentInfoList(){ return DialogueSegmentInfoList; };
 
-public: //callbacks
-		typedef TFunction<void()> 				FOnMsgCallbackFunction;
+
+
+public: //delegate
+
+	// for blueprint
+	UPROPERTY(BlueprintAssignable, Category = "HorizonPlugin|Delegate")
+	FOnHorizonHypertextEvent OnHypertextClickedDelegate;
+	UPROPERTY(BlueprintAssignable, Category = "HorizonPlugin|Delegate")
+	FOnHorizonHypertextEvent OnHypertextPressedDelegate;
+	UPROPERTY(BlueprintAssignable, Category = "HorizonPlugin|Delegate")
+	FOnHorizonHypertextEvent OnHypertextReleasedDelegate;
+	UPROPERTY(BlueprintAssignable, Category = "HorizonPlugin|Delegate")
+	FOnHorizonHypertextEvent OnHypertextHoveredDelegate;
+	UPROPERTY(BlueprintAssignable, Category = "HorizonPlugin|Delegate")
+	FOnHorizonHypertextEvent OnHypertextUnhoveredDelegate;
+	UPROPERTY(BlueprintAssignable, Category = "HorizonPlugin|Delegate")
+	FOnHorizonDialogueMsgEvent OnDialogueMsgLoopFunction;
+	UPROPERTY(BlueprintAssignable, Category = "HorizonPlugin|Delegate")
+	FOnHorizonDialogueMsgEvent OnDialogueMsgCompleteFunction;
+
+	UPROPERTY(BlueprintAssignable, Category = "HorizonPlugin|Delegate")
+	FOnHorizonSetDialoguePageEvent OnSetDialoguePageFunction;
 	
 
-		void SetDialogueMsgLoopCallback(const FOnMsgCallbackFunction& callback) {
-			OnDialogueMsgLoopFunction = callback;
-		};
 
-		void SetDialoueMsgCompleteCallback(const FOnMsgCallbackFunction& callback) {
-			OnDialogueMsgCompleteFunction = callback;
-		};
+	// for c++ callback binding
+	FOnHorizonHypertextEventNative OnHypertextClickedDelegateNative;
+	FOnHorizonHypertextEventNative OnHypertextPressedDelegateNative;
+	FOnHorizonHypertextEventNative OnHypertextReleasedDelegateNative;
+	FOnHorizonHypertextEventNative OnHypertextHoveredDelegateNative;
+	FOnHorizonHypertextEventNative OnHypertextUnhoveredDelegateNative;
 
+	FOnHorizonDialogueMsgEventNative OnDialogueMsgLoopFunctionNative;
+	FOnHorizonDialogueMsgEventNative OnDialogueMsgCompleteFunctionNative;
+	FOnHorizonSetDialoguePageEventNative OnSetDialoguePageFunctionNative;
 
-private:
-		TOptional<FOnMsgCallbackFunction> OnDialogueMsgLoopFunction;
-		TOptional<FOnMsgCallbackFunction> OnDialogueMsgCompleteFunction;
 protected:
 	//~ Begin UWidget Interface
 	virtual TSharedRef<SWidget> RebuildWidget() override;
@@ -407,6 +467,9 @@ protected:
 	virtual void RebuildSegmentInfoList();
 	
 	virtual void RebuildLineInfoList();
+
+	virtual void RebuildPageInfoList();
+
 private:
 	void RebuildSegmentInfoListImplement(const FHorizonDialogueSegmentInfo& parentSegParam, const FXmlNode* pCurrentNode);
 	void AddTextSegmentInfo(const FString& text);
@@ -418,14 +481,65 @@ private:
 	FHorizonDialogueBlockInfo CreateDialogueTextBlockInfo(int segmentIndex, int segTextStartIndex, int segTextEndIndex, const FVector2D& pos);
 	FHorizonDialogueBlockInfo CreateDialogueImageBlockInfo(int segmentIndex, const FVector2D& pos);
 	FHorizonDialogueBlockInfo CreateDialoguePaperFlipbookBlockInfo(int segmentIndex, const FVector2D& pos);
-	void AddDialogueBlock(FHorizonDialogueLineInfo& lineInfo, FHorizonDialogueBlockInfo&& blockInfo);
-protected:
-	TArray<FHorizonDialogueLineInfo> DialogueLineInfoList;
 
+	//add BG button to Block
+	void AddBackgroundButton(int segmentIndex,
+		FHorizonDialogueBlockInfo& blockInfo, 
+		UCanvasPanelSlot* pCanvasPanelSlot, const FVector2D& paddingPos);
+	void AddDialogueBlock(FHorizonDialogueLineInfo& lineInfo, FHorizonDialogueBlockInfo&& blockInfo);
+
+	void LoadSound(FHorizonDialogueSegmentInfo& segInfo, FHorizonDialogueBlockInfo& blockInfo);
+private://text overflow warp method implement
+
+	bool TryAddNewLine(TCHAR currentChar, float& currentLineWidth, FVector2D& blockPos,
+		const int& currentSegInfoIndex, int& segStartCharIndex, int& segCharIndex);
+
+
+	bool TryAddDialogueBlock(const float& maxLineWidth,
+		const FVector2D& oneWordSize, float& currentLineWidth,
+		FVector2D& blockPos,
+		const int& currentSegInfoIndex, int& segStartCharIndex, int& segCharIndex,
+		bool bWordBreakMode = false);
+
+
+
+
+	
+	void TextOverflowWarpNormal_Implement(float& currentLineWidth, FVector2D& blockPos, const int& currentSegInfoIndex,
+		const float& maxLineWidth, const FHorizonDialogueSegmentInfo& segInfo);
+
+	void TextOverflowWarpNormal_WordBreakImplement(int& segCharIndex, int& segWordCharEndIndex, float& currentLineWidth, FVector2D& blockPos, const int& currentSegInfoIndex,
+		const float& maxLineWidth, const FHorizonDialogueSegmentInfo& segInfo);
+
+	void TextOverflowWarpBreakAll_Implement(float& currentLineWidth, FVector2D& blockPos, const int& currentSegInfoIndex,
+		const float& maxLineWidth, const FHorizonDialogueSegmentInfo& segInfo);
+
+	virtual void SetSegmentColor(int segmentIndex, int lineIndex, const FSlateColor& InColor);
+	
+
+private:
+	void SetPageVisiblity(bool b, const FHorizonDialoguePageInfo& InPageInfo);
+
+
+protected:
+
+
+	TArray<FHorizonDialoguePageInfo> DialoguePageInfoList;
+	TArray<FHorizonDialogueLineInfo> DialogueLineInfoList;
 	TArray<FHorizonDialogueSegmentInfo> DialogueSegmentInfoList;
 	
-	int CurrentDialogueLineIndex;
-	float MsgDeltaTime;
+	int CurrentDialogueLineIndex = 0;
+	int CurrentPageIndex = 0;
 
-	bool bCreationFromPalette;
+
+	float MsgDeltaTime = 0.0f;
+
+	float RepeatDialogueMsgDeltaTime = 0.0f;
+
+	bool bCreationFromPalette = false;
+
+private:
+	bool bNeedRebuildDialogueMsgText = false;
+	// off set for recalcuate position.Y for line's in other page
+	float CurrentPageHeightOffset = 0.0f;
 };

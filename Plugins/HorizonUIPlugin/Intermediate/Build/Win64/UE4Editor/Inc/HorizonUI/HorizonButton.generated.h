@@ -8,14 +8,112 @@
 #include "ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UHorizonButton;
 #ifdef HORIZONUI_HorizonButton_generated_h
 #error "HorizonButton.generated.h already included, missing '#pragma once' in HorizonButton.h"
 #endif
 #define HORIZONUI_HorizonButton_generated_h
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_RPC_WRAPPERS
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_RPC_WRAPPERS_NO_PURE_DECLS
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_INCLASS_NO_PURE_DECLS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_10_DELEGATE \
+struct _Script_HorizonUI_eventOnHorizonButtonEvent_Parms \
+{ \
+	UHorizonButton* pButton; \
+}; \
+static inline void FOnHorizonButtonEvent_DelegateWrapper(const FMulticastScriptDelegate& OnHorizonButtonEvent, UHorizonButton* pButton) \
+{ \
+	_Script_HorizonUI_eventOnHorizonButtonEvent_Parms Parms; \
+	Parms.pButton=pButton; \
+	OnHorizonButtonEvent.ProcessMulticastDelegate<UObject>(&Parms); \
+}
+
+
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execOnUnhoveredButton) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnUnhoveredButton(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnHoveredButton) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnHoveredButton(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnClickedButton) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnClickedButton(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnReleasedButton) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnReleasedButton(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnPressedButton) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnPressedButton(); \
+		P_NATIVE_END; \
+	}
+
+
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execOnUnhoveredButton) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnUnhoveredButton(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnHoveredButton) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnHoveredButton(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnClickedButton) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnClickedButton(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnReleasedButton) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnReleasedButton(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execOnPressedButton) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->OnPressedButton(); \
+		P_NATIVE_END; \
+	}
+
+
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUHorizonButton(); \
 	friend HORIZONUI_API class UClass* Z_Construct_UClass_UHorizonButton(); \
@@ -25,7 +123,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_INCLASS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_INCLASS \
 private: \
 	static void StaticRegisterNativesUHorizonButton(); \
 	friend HORIZONUI_API class UClass* Z_Construct_UClass_UHorizonButton(); \
@@ -35,7 +133,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_STANDARD_CONSTRUCTORS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UHorizonButton(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UHorizonButton) \
@@ -48,7 +146,7 @@ private: \
 public:
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_ENHANCED_CONSTRUCTORS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UHorizonButton(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -61,32 +159,32 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UHorizonButton); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UHorizonButton)
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_PRIVATE_PROPERTY_OFFSET
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_11_PROLOG
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_GENERATED_BODY_LEGACY \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_PRIVATE_PROPERTY_OFFSET
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_15_PROLOG
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_PRIVATE_PROPERTY_OFFSET \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_RPC_WRAPPERS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_INCLASS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_STANDARD_CONSTRUCTORS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_PRIVATE_PROPERTY_OFFSET \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_RPC_WRAPPERS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_INCLASS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_GENERATED_BODY \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_PRIVATE_PROPERTY_OFFSET \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_INCLASS_NO_PURE_DECLS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_14_ENHANCED_CONSTRUCTORS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_PRIVATE_PROPERTY_OFFSET \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_INCLASS_NO_PURE_DECLS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h_18_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h
+#define CURRENT_FILE_ID CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonButton_h
 
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

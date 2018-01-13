@@ -5,12 +5,19 @@
 #include "Horizon/FileSystem/HorizonFileSystem.h"
 
 
-#include "Runtime/ImageWrapper/Public/Interfaces/IImageWrapper.h"
-#include "Runtime/ImageWrapper/Public/Interfaces/IImageWrapperModule.h"
-
-
+#include "IImageWrapper.h"
+#include "IImageWrapperModule.h"
+#include "IImageWrapper.h"
+#include "PackageName.h"
+#include "PlatformFilemanager.h"
+#include "Paths.h"
+#include "ModuleManager.h"
+#include "FileHelper.h"
+#include "Engine/Texture2D.h"
 //engine
 #include "PaperFlipbook.h"
+
+
 //#include "WidgetBlueprint.h"
 // singleton stuff
 static UHorizonFileSystem *s_instance = NULL;
@@ -177,6 +184,12 @@ UFont* UHorizonFileSystem::LoadFont(const FString& packageFilePath) {
 	return pRet;
 }
 
+USoundBase* UHorizonFileSystem::LoadSound(const FString& packageFilePath)
+{
+	auto pRet = Cast<USoundBase>(LoadUAsset(packageFilePath));
+	return pRet;
+}
+
 UUserWidget* UHorizonFileSystem::LoadUserWidget(UWorld* pWorld, const FString& packageFilePath) {
 
 	UUserWidget* pRet = nullptr;
@@ -244,7 +257,7 @@ UTexture2D* UHorizonFileSystem::LoadTexture2DImplement(const FString& FullFilePa
 	UTexture2D* LoadedT2D = nullptr;
 
 	IImageWrapperModule& ImageWrapperModule = FModuleManager::LoadModuleChecked<IImageWrapperModule>(FName("ImageWrapper"));
-	IImageWrapperPtr ImageWrapper = ImageWrapperModule.CreateImageWrapper(GetImageFormat(FullFilePath));
+	TSharedPtr<IImageWrapper> ImageWrapper = ImageWrapperModule.CreateImageWrapper(GetImageFormat(FullFilePath));
 
 	//Load From File
 	TArray<uint8> RawFileData;

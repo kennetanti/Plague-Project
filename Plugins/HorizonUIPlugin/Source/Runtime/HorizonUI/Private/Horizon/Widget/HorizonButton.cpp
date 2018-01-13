@@ -3,6 +3,53 @@
 #include "HorizonButton.h"
 
 
+void UHorizonButton::OnWidgetRebuilt()
+{
+	Super::OnWidgetRebuilt();
+	OnPressed.AddDynamic(this, &UHorizonButton::OnPressedButton);
+	OnReleased.AddDynamic(this, &UHorizonButton::OnReleasedButton);
+	OnClicked.AddDynamic(this, &UHorizonButton::OnClickedButton);
+	OnHovered.AddDynamic(this, &UHorizonButton::OnHoveredButton);
+	OnUnhovered.AddDynamic(this, &UHorizonButton::OnUnhoveredButton);
+
+}
+
+
+
+void UHorizonButton::OnPressedButton()
+{
+	OnPressedDelegate.Broadcast(this);
+	OnPressedDelegateNative.Broadcast(this);
+	
+}
+
+void UHorizonButton::OnReleasedButton()
+{
+	OnReleasedDelegate.Broadcast(this);
+	OnReleasedDelegateNative.Broadcast(this);
+}
+
+void UHorizonButton::OnClickedButton()
+{
+	OnClickedDelegate.Broadcast(this);
+	OnClickedDelegateNative.Broadcast(this);
+
+}
+
+
+void UHorizonButton::OnHoveredButton()
+{
+	OnHoveredDelegate.Broadcast(this);
+	OnHoveredDelegateNative.Broadcast(this);
+
+}
+
+void UHorizonButton::OnUnhoveredButton()
+{
+	OnUnhoveredDelegate.Broadcast(this);
+	OnUnhoveredDelegateNative.Broadcast(this);
+}
+
 
 
 #if WITH_EDITOR

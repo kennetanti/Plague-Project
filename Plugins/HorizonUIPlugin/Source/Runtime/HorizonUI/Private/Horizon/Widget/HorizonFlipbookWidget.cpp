@@ -1,4 +1,4 @@
-// Crated by dorgon, All Rights Reserved.
+// Created by dorgon, All Rights Reserved.
 // email: dorgonman@hotmail.com
 // blog: dorgon.horizon-studio.net
 
@@ -20,18 +20,7 @@
 //std
 #include <limits>
 
-UHorizonFlipbookWidget::UHorizonFlipbookWidget()
-	: ColorAndOpacity(FLinearColor(1.0f, 1.0f, 1.0f, 1.0f))
-    , bIsStartTick(true)
-	, NumOfLoop(0)
-	, PaperFlipbook(nullptr)
-	, CurrentDuration(0.0f)
-	, CurrentNumOfLoop(0)
-{
-}
-UHorizonFlipbookWidget::~UHorizonFlipbookWidget() {
 
-}
 
 
 void UHorizonFlipbookWidget::Tick(float DeltaTime) {
@@ -193,3 +182,12 @@ void UHorizonFlipbookWidget::SetFlipbook(UPaperFlipbook* flipbook) {
 	PaperFlipbook = flipbook;
 }
 
+
+
+
+void UHorizonFlipbookWidget::SetFlipbookSource(const TArray<FVector2D>& sourceUV,
+	const TArray<FVector2D>& sourceSize)
+{
+	SetFlipbookSourceUV(sourceUV);
+	SetFlipbookSourceSize(sourceSize);
+};

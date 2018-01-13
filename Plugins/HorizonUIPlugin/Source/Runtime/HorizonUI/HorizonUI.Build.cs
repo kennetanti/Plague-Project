@@ -40,14 +40,17 @@ public class HorizonUI : ModuleRules
         PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore", "UMG", "Paper2D" });
         PrivateDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
         PrivateDependencyModuleNames.AddRange(new string[] { "ImageWrapper", "XmlParser" });
-
+       // if (UEBuildConfiguration.bBuildEditor)
+       // {
+           // PrivateDependencyModuleNames.AddRange(new string[] { "UnrealEd" });
+       // }
 
         DynamicallyLoadedModuleNames.AddRange(
-			new string[]
-			{
-				// ... add any modules that your module loads dynamically here ...
-			}
-			);
+		new string[]
+		{
+			// ... add any modules that your module loads dynamically here ...
+		}
+		);
 
     }
 }

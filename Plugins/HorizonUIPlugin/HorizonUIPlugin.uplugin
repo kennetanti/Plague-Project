@@ -1,26 +1,33 @@
 {
-	"FileVersion" : 3,
-	"Version" : 43,
-	"VersionName" : "1.3.0",
-	"FriendlyName" : "Horizon UI Plugin",
-	"Description" : "Horizon UMG extension for UE4",
-	"Category" : "Horizon",
-	"CreatedBy" : "dorgon",
-	"CreatedByURL" : "http://dorgon.horizon-studio.net",
-	"DocsURL" : "https://github.com/dorgonman/HorizonUIPluginDemo",
-	"MarketplaceURL" : "com.epicgames.launcher://ue/marketplace/content/8b94d073d32443b497d4a9e8b1e210f7",
-	"SupportURL" : "http://dorgon.horizon-studio.net",
-	"EngineVersion" : "4.16.0",
-	"CanContainContent" : false,
-	"IsBetaVersion" : false,
-	"Installed" : true,
-	"RequiresBuildPlatform" : false,
-	"Modules" :
-	[
-		{
-			"Name" : "HorizonUI",
-			"Type" : "Runtime",
-			"LoadingPhase" : "Default"
-		}
-	]
+    "CanContainContent": false,
+    "Category": "Horizon",
+    "CreatedBy": "dorgon",
+    "CreatedByURL": "http://dorgon.horizon-studio.net",
+    "Description": "Horizon UMG extension for UE4",
+    "DocsURL": "https://github.com/dorgonman/HorizonUIPluginDemo",
+    "EnabledByDefault": true,
+    "EngineVersion": "4.16.0",
+    "FileVersion": 3,
+    "FriendlyName": "Horizon UI Plugin",
+    "Installed": true,
+    "IsBetaVersion": false,
+    "MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/8b94d073d32443b497d4a9e8b1e210f7",
+    "Modules": [
+        {
+            "LoadingPhase": "Default",
+            "Name": "HorizonUI",
+            "Type": "Runtime"
+        }
+    ],
+    "Plugins": [
+        {
+            "Enabled": true,
+            "MarketplaceURL": "",
+            "Name": "Paper2D"
+        }
+    ],
+    "RequiresBuildPlatform": false,
+    "SupportURL": "http://dorgon.horizon-studio.net",
+    "Version": 77,
+    "VersionName": "4.18.1"
 }

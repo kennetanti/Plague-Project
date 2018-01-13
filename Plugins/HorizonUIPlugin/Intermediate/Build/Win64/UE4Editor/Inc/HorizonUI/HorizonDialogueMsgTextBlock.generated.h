@@ -8,6 +8,8 @@
 #include "ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+struct FHorizonDialogueSetDialoguePageResult;
+struct FHorizonDialogueHypertextResult;
 struct FSlateFontInfo;
 struct FVector2D;
 struct FLinearColor;
@@ -17,27 +19,95 @@ struct FSlateColor;
 #endif
 #define HORIZONUI_HorizonDialogueMsgTextBlock_generated_h
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_97_GENERATED_BODY \
-	friend HORIZONUI_API class UScriptStruct* Z_Construct_UScriptStruct_FHorizonDialogueSegmentInfoStyle(); \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_157_GENERATED_BODY \
+	friend HORIZONUI_API class UScriptStruct* Z_Construct_UScriptStruct_FHorizonDialogueSetDialoguePageResult(); \
 	HORIZONUI_API static class UScriptStruct* StaticStruct();
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_67_GENERATED_BODY \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_131_GENERATED_BODY \
+	friend HORIZONUI_API class UScriptStruct* Z_Construct_UScriptStruct_FHorizonDialogueHypertextResult(); \
+	HORIZONUI_API static class UScriptStruct* StaticStruct();
+
+
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_113_GENERATED_BODY \
+	friend HORIZONUI_API class UScriptStruct* Z_Construct_UScriptStruct_FHorizonDialoguePageInfo(); \
+	HORIZONUI_API static class UScriptStruct* StaticStruct();
+
+
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_75_GENERATED_BODY \
 	friend HORIZONUI_API class UScriptStruct* Z_Construct_UScriptStruct_FHorizonDialogueSegmentInfo(); \
 	HORIZONUI_API static class UScriptStruct* StaticStruct();
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_36_GENERATED_BODY \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_39_GENERATED_BODY \
 	friend HORIZONUI_API class UScriptStruct* Z_Construct_UScriptStruct_FHorizonDialogueLineInfo(); \
 	HORIZONUI_API static class UScriptStruct* StaticStruct();
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_20_GENERATED_BODY \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_19_GENERATED_BODY \
 	friend HORIZONUI_API class UScriptStruct* Z_Construct_UScriptStruct_FHorizonDialogueBlockInfo(); \
 	HORIZONUI_API static class UScriptStruct* StaticStruct();
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_RPC_WRAPPERS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_171_DELEGATE \
+struct _Script_HorizonUI_eventOnHorizonSetDialoguePageEvent_Parms \
+{ \
+	FHorizonDialogueSetDialoguePageResult InResult; \
+}; \
+static inline void FOnHorizonSetDialoguePageEvent_DelegateWrapper(const FMulticastScriptDelegate& OnHorizonSetDialoguePageEvent, FHorizonDialogueSetDialoguePageResult InResult) \
+{ \
+	_Script_HorizonUI_eventOnHorizonSetDialoguePageEvent_Parms Parms; \
+	Parms.InResult=InResult; \
+	OnHorizonSetDialoguePageEvent.ProcessMulticastDelegate<UObject>(&Parms); \
+}
+
+
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_167_DELEGATE \
+static inline void FOnHorizonDialogueMsgEvent_DelegateWrapper(const FMulticastScriptDelegate& OnHorizonDialogueMsgEvent) \
+{ \
+	OnHorizonDialogueMsgEvent.ProcessMulticastDelegate<UObject>(NULL); \
+}
+
+
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_DELEGATE \
+struct _Script_HorizonUI_eventOnHorizonHypertextEvent_Parms \
+{ \
+	FHorizonDialogueHypertextResult InResult; \
+}; \
+static inline void FOnHorizonHypertextEvent_DelegateWrapper(const FMulticastScriptDelegate& OnHorizonHypertextEvent, FHorizonDialogueHypertextResult InResult) \
+{ \
+	_Script_HorizonUI_eventOnHorizonHypertextEvent_Parms Parms; \
+	Parms.InResult=InResult; \
+	OnHorizonHypertextEvent.ProcessMulticastDelegate<UObject>(&Parms); \
+}
+
+
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execSetDialogueMsgPage) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_Page); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetDialogueMsgPage(Z_Param_Page); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetCurrentPageIndex) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(int32*)Z_Param__Result=this->GetCurrentPageIndex(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execNextDialogueMsgPage) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->NextDialogueMsgPage(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execStartDialogue) \
 	{ \
@@ -52,6 +122,15 @@ struct FSlateColor;
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		this->StopDialogue(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execSetTextAndRebuildDialogue) \
+	{ \
+		P_GET_PROPERTY_REF(UTextProperty,Z_Param_Out_InText); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetTextAndRebuildDialogue(Z_Param_Out_InText); \
 		P_NATIVE_END; \
 	} \
  \
@@ -144,7 +223,32 @@ struct FSlateColor;
 	}
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_RPC_WRAPPERS_NO_PURE_DECLS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execSetDialogueMsgPage) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_Page); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetDialogueMsgPage(Z_Param_Page); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execGetCurrentPageIndex) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(int32*)Z_Param__Result=this->GetCurrentPageIndex(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execNextDialogueMsgPage) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->NextDialogueMsgPage(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execStartDialogue) \
 	{ \
@@ -159,6 +263,15 @@ struct FSlateColor;
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
 		this->StopDialogue(); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execSetTextAndRebuildDialogue) \
+	{ \
+		P_GET_PROPERTY_REF(UTextProperty,Z_Param_Out_InText); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetTextAndRebuildDialogue(Z_Param_Out_InText); \
 		P_NATIVE_END; \
 	} \
  \
@@ -251,7 +364,7 @@ struct FSlateColor;
 	}
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_INCLASS_NO_PURE_DECLS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUHorizonDialogueMsgTextBlock(); \
 	friend HORIZONUI_API class UClass* Z_Construct_UClass_UHorizonDialogueMsgTextBlock(); \
@@ -261,7 +374,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_INCLASS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_INCLASS \
 private: \
 	static void StaticRegisterNativesUHorizonDialogueMsgTextBlock(); \
 	friend HORIZONUI_API class UClass* Z_Construct_UClass_UHorizonDialogueMsgTextBlock(); \
@@ -271,7 +384,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_STANDARD_CONSTRUCTORS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UHorizonDialogueMsgTextBlock(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UHorizonDialogueMsgTextBlock) \
@@ -284,7 +397,7 @@ private: \
 public:
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_ENHANCED_CONSTRUCTORS \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API UHorizonDialogueMsgTextBlock(UHorizonDialogueMsgTextBlock&&); \
@@ -295,39 +408,46 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UHorizonDialogueMsgTextBlock); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UHorizonDialogueMsgTextBlock)
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_PRIVATE_PROPERTY_OFFSET
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_158_PROLOG
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_GENERATED_BODY_LEGACY \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__StyleInfoList() { return STRUCT_OFFSET(UHorizonDialogueMsgTextBlock, StyleInfoList); }
+
+
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_175_PROLOG
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_PRIVATE_PROPERTY_OFFSET \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_RPC_WRAPPERS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_INCLASS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_STANDARD_CONSTRUCTORS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_PRIVATE_PROPERTY_OFFSET \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_RPC_WRAPPERS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_INCLASS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_GENERATED_BODY \
+#define CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_PRIVATE_PROPERTY_OFFSET \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_RPC_WRAPPERS_NO_PURE_DECLS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_INCLASS_NO_PURE_DECLS \
-	HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_163_ENHANCED_CONSTRUCTORS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_PRIVATE_PROPERTY_OFFSET \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_RPC_WRAPPERS_NO_PURE_DECLS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_INCLASS_NO_PURE_DECLS \
+	CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h_180_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
 #undef CURRENT_FILE_ID
-#define CURRENT_FILE_ID HostProject_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h
+#define CURRENT_FILE_ID CombatSystem_Plugins_HorizonUIPlugin_Source_Runtime_HorizonUI_Public_Horizon_Widget_HorizonDialogueMsgTextBlock_h
 
 
+#define FOREACH_ENUM_EHORIZONDIALOGUETEXTOVERFLOWWARPMETHOD(op) \
+	op(EHorizonDialogueTextOverflowWarpMethod::Normal) \
+	op(EHorizonDialogueTextOverflowWarpMethod::BreakAll) 
 #define FOREACH_ENUM_EHORIZONDIALOGUESEGMENTTYPE(op) \
 	op(EHorizonDialogueSegmentType::Invalidated) \
 	op(EHorizonDialogueSegmentType::Text) \
 	op(EHorizonDialogueSegmentType::NewLine) \
 	op(EHorizonDialogueSegmentType::Image) \
 	op(EHorizonDialogueSegmentType::PaperFlipbook) \
-	op(EHorizonDialogueSegmentType::Material) 
+	op(EHorizonDialogueSegmentType::Material) \
+	op(EHorizonDialogueSegmentType::HyperText) 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

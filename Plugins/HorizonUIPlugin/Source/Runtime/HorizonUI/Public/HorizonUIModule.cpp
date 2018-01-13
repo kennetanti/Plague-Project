@@ -1,4 +1,4 @@
-// Crated by dorgon, All Rights Reserved.
+// Created by dorgon, All Rights Reserved.
 // email: dorgonman@hotmail.com
 // blog: dorgon.horizon-studio.net
 

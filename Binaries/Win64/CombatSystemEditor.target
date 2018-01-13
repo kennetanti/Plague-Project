@@ -37,6 +37,18 @@
 			"IsPrecompiled" : true
 		},
 		{
+			"Path" : "$(ProjectDir)/Plugins/HorizonUIPlugin/Binaries/Win64/UE4Editor-HorizonUI.dll",
+			"Type" : "DynamicLibrary"
+		},
+		{
+			"Path" : "$(ProjectDir)/Plugins/HorizonUIPlugin/Binaries/Win64/UE4Editor-HorizonUI.pdb",
+			"Type" : "SymbolFile"
+		},
+		{
+			"Path" : "$(ProjectDir)/Plugins/HorizonUIPlugin/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-HorizonUI.lib",
+			"Type" : "ImportLibrary"
+		},
+		{
 			"Path" : "$(EngineDir)/Plugins/2D/Paper2D/Binaries/Win64/UE4Editor-Paper2D.dll",
 			"Type" : "DynamicLibrary",
 			"IsPrecompiled" : true
@@ -5569,6 +5581,10 @@
 			"IsPrecompiled" : true
 		},
 		{
+			"Path" : "$(ProjectDir)/Plugins/HorizonUIPlugin/Binaries/Win64/UE4Editor.modules",
+			"Type" : "RequiredResource"
+		},
+		{
 			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor.modules",
 			"Type" : "RequiredResource"
 		}
@@ -5577,6 +5593,10 @@
 	[
 		{
 			"Path" : "$(ProjectDir)/CombatSystem.uproject",
+			"Type" : "UFS"
+		},
+		{
+			"Path" : "$(ProjectDir)/Plugins/HorizonUIPlugin/HorizonUIPlugin.uplugin",
 			"Type" : "UFS"
 		},
 		{

@@ -29,3 +29,6 @@ DECLARE_LOG_CATEGORY_EXTERN(HorizonUI, Log, All);
 #define UE_HORIZONUI_LOG(msg, ...) UE_LOG(HorizonUI, Log, TEXT(msg), ##__VA_ARGS__)
 #define UE_HORIZONUI_VERBOSE(msg, ...) UE_LOG(HorizonUI, Verbose, TEXT(msg), ##__VA_ARGS__)
 #define UE_HORIZONUI_VERY_VERBOSE(msg, ...) UE_LOG(HorizonUI, VeryVerbose, TEXT(msg), ##__VA_ARGS__)
+
+
+FName GName_HorizonUIPlugin = "HorizonUIPlugin";

@@ -7,6 +7,8 @@
 #include "PaperFlipbook.h"
 #include "PaperFlipbookComponent.h"
 #include "PaperSprite.h"
+#include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetStringLibrary.h"
 
 UCanvasPanelSlot* UHorizonWidgetFunctionLibrary::GetParentCanvasPanelSlot(UWidget* pWidget){
 	UCanvasPanelSlot* pPanelSlot = nullptr;
@@ -85,5 +87,79 @@ UWidgetAnimation* UHorizonWidgetFunctionLibrary::GetUserWidgetAnimation(
 		}
 	}
 	return nullptr;
+
+}
+
+int UHorizonWidgetFunctionLibrary::FindCharIndexFromStr(int startIndex , TCHAR aChar, const FString& str)
+{
+	TArray<TCHAR> CharList;
+	CharList.Add(aChar);
+	int result = UHorizonWidgetFunctionLibrary::FindCharIndexFromStr(startIndex, CharList, str);
+
+
+	return result;
+
+}
+
+
+int UHorizonWidgetFunctionLibrary::FindCharIndexFromStr(int startIndex, const TArray<TCHAR>& charList, const FString& str)
+{
+	int result = str.Len();
+	int currentIndex = startIndex;
+	while (currentIndex < str.Len()) {
+		TCHAR currentChar = str[currentIndex];
+		
+		if(charList.Contains(currentChar))
+		{
+			result = currentIndex;
+			break;
+		}
+	
+		++currentIndex;
+	};
+
+
+	return result;
+
+}
+
+
+FString UHorizonWidgetFunctionLibrary::NormalizeBlueprintClassFilePath(const FString& filePath)
+{
+	FString result = filePath;
+	//Blueprint'/Game/UMG/DialogueMsgTextTest/ButtonStyle/BP_DialogueBackgroundButtonStyle1.BP_DialogueBackgroundButtonStyle1'
+	int lastFindCharIndex = -1;
+	result.FindChar('\'', lastFindCharIndex);
+	if (lastFindCharIndex != -1)
+	{
+		result = UKismetStringLibrary::GetSubstring(result, lastFindCharIndex + 1, filePath.Len() - lastFindCharIndex);
+	}
+	
+	result = result.Replace(TEXT("'"), TEXT(""));
+
+
+	result.FindLastChar('/', lastFindCharIndex);
+	if (lastFindCharIndex != -1)
+	{
+		auto folderPath = UKismetStringLibrary::GetSubstring(result, 0, lastFindCharIndex + 1);
+		auto fileName = UKismetStringLibrary::GetSubstring(result, lastFindCharIndex + 1, filePath.Len() - lastFindCharIndex);
+		auto bIsClassSuffix = UKismetStringLibrary::GetSubstring(fileName, fileName.Len() - 2, 2) == TEXT("_C");
+		if (bIsClassSuffix)
+		{
+			fileName = UKismetStringLibrary::GetSubstring(fileName, 0, fileName.Len() - 2);
+		}
+
+		fileName.FindLastChar('.', lastFindCharIndex);
+		if (lastFindCharIndex == -1)
+		{
+			fileName = FString::Printf(TEXT("%s.%s"), *fileName, *fileName);
+		}
+
+
+
+		result = FString::Printf(TEXT("%s%s_C"), *folderPath, *fileName);
+	}
+
+	return result;
 
 }
