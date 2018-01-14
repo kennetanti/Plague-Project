@@ -309,11 +309,11 @@ public:
 	* Warning: This will wipe any binding created for the Text property!
 	* @param InText The text to assign to the widget
 	*/
-	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Widget", meta = (DisplayName = "SetText (Text)"))
-		void SetText(FText InText);
+	//UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Widget", meta = (DisplayName = "SetText (Text)"))
+	void SetText(FText InText);
 
 	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Widget")
-		void SetTextAndRebuildDialogue(const FText& InText);
+	void SetTextAndRebuildDialogue(const FText& InText);
 
 	//~ Begin UWidget Interface
 	virtual void SynchronizeProperties() override;
@@ -355,13 +355,16 @@ public:
 	void SetDialogueMsgSpeed(float speed);
 	UPROPERTY()
 	bool bIsDialogueMsgText = false;
+	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Behavior")
 	void SetIsDialogueMsgText(bool b);
 
 	/** should we start tick dialogue*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HorizonPlugin|Behavior", meta = (EditCondition = "bIsDialogueMsgText"))
 	bool bIsStartTickDialogueMsg = false;
-	void SetIsStartTickDialogueMsg(bool b);
 
+	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Behavior")
+	void SetIsStartTickDialogueMsg(bool b);
+	UFUNCTION(BlueprintCallable, Category = "HorizonPlugin|Behavior")
 	void SetIsRepeatDialogueMsg(bool b);
 
 	UPROPERTY()

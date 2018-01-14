@@ -139,14 +139,22 @@ void UHorizonDialogueMsgTextBlock::Tick(float DeltaTime) {
 		}
 		else 
 		{
-			if (bAutoNextDialogueMsgPage)
+			if (DialoguePageInfoList.Num() > 1)
 			{
-				AutoNextDialogueMsgPageDeltaTime += DeltaTime;
-				if (AutoNextDialogueMsgPageDeltaTime >= AutoNextDialogueMsgPageInterval) 
+
+				if (bAutoNextDialogueMsgPage)
 				{
-					AutoNextDialogueMsgPageDeltaTime = 0.0f;
-					NextDialogueMsgPage();
+					AutoNextDialogueMsgPageDeltaTime += DeltaTime;
+					if (AutoNextDialogueMsgPageDeltaTime >= AutoNextDialogueMsgPageInterval)
+					{
+						AutoNextDialogueMsgPageDeltaTime = 0.0f;
+						NextDialogueMsgPage();
+					}
 				}
+			}
+			else
+			{
+				NextDialogueMsgPage();
 			}
 
 		

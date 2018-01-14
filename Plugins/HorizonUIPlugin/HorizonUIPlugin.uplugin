@@ -28,6 +28,6 @@
     ],
     "RequiresBuildPlatform": false,
     "SupportURL": "http://dorgon.horizon-studio.net",
-    "Version": 77,
+    "Version": 81,
     "VersionName": "4.18.1"
 }
