@@ -4,7 +4,7 @@ using UnrealBuildTool;
 
 public class CombatSystem : ModuleRules
 {
-	public CombatSystem(TargetInfo Target)
+	public CombatSystem(ReadOnlyTargetRules Target) : base (Target)
 	{
         MinFilesUsingPrecompiledHeaderOverride = 1;
         bFasterWithoutUnity = true;

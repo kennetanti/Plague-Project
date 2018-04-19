@@ -5,12 +5,12 @@
 #pragma once
 
 #include "ModuleManager.h"
-#include "Horizon/Widget/HorizonWidgetFunctionLibrary.h"
-#include "Horizon/Widget/HorizonUserWidget.h"
-#include "Horizon/Widget/HorizonImage.h"
-#include "Horizon/Widget/HorizonFlipbookWidget.h"
-#include "Horizon/Widget/HorizonDialogueMsgTextBlock.h"
-#include "Horizon/Widget/HorizonTextBlock.h"
+#include "HorizonWidgetFunctionLibrary.h"
+#include "HorizonUserWidget.h"
+#include "HorizonImage.h"
+#include "HorizonFlipbookWidget.h"
+#include "HorizonDialogueMsgTextBlock.h"
+#include "HorizonTextBlock.h"
 
 class IHorizonUIModule
 	: public IModuleInterface
