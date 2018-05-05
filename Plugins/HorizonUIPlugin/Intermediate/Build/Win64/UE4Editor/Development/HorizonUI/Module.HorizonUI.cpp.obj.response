@@ -24,13 +24,13 @@
 /wd4838
 /w44668
 /I "D:\GameWork\Epic Games\UE_4.19\Engine\Source"
-/I "D:\GameWork\Unreal Project\Plague-Project\Plugins\HorizonUIPlugin\Source\Runtime\HorizonUI\Private"
-/I "D:\GameWork\Unreal Project\Plague-Project\Plugins\HorizonUIPlugin\Source"
-/I "D:\GameWork\Unreal Project\Plague-Project\Plugins\HorizonUIPlugin\Source\Runtime\HorizonUI\Public"
-/I "D:\GameWork\Unreal Project\Plague-Project\Plugins\HorizonUIPlugin\Source\Runtime\HorizonUI\Public\FileSystem"
-/I "D:\GameWork\Unreal Project\Plague-Project\Plugins\HorizonUIPlugin\Source\Runtime\HorizonUI\Public\Widget"
-/I "D:\GameWork\Unreal Project\Plague-Project\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Inc\HorizonUI"
-/I "D:\GameWork\Unreal Project\Plague-Project\Plugins\HorizonUIPlugin\Source\Runtime\HorizonUI"
+/I "D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Source\Runtime\HorizonUI\Private"
+/I "D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Source"
+/I "D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Source\Runtime\HorizonUI\Public"
+/I "D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Source\Runtime\HorizonUI\Public\FileSystem"
+/I "D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Source\Runtime\HorizonUI\Public\Widget"
+/I "D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Inc\HorizonUI"
+/I "D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Source\Runtime\HorizonUI"
 /I "D:\GameWork\Epic Games\UE_4.19\Engine\Source\Runtime\Slate\Public"
 /I "D:\GameWork\Epic Games\UE_4.19\Engine\Source\Runtime\Slate\Public\Framework"
 /I "D:\GameWork\Epic Games\UE_4.19\Engine\Source\Runtime\Slate\Public\Framework\Application"
@@ -374,9 +374,9 @@
 /FI"D:\GameWork\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Yu"D:\GameWork\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h"
 /Fp"D:\GameWork\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.pch"
-"D:\GameWork\Unreal Project\Plague-Project\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Development\HorizonUI\Module.HorizonUI.cpp"
-/FI"D:\GameWork\Unreal Project\Plague-Project\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Development\HorizonUI\Definitions.HorizonUI.h"
-/Fo"D:\GameWork\Unreal Project\Plague-Project\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Development\HorizonUI\Module.HorizonUI.cpp.obj"
+"D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Development\HorizonUI\Module.HorizonUI.cpp"
+/FI"D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Development\HorizonUI\Definitions.HorizonUI.h"
+/Fo"D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Development\HorizonUI\Module.HorizonUI.cpp.obj"
 /TP
 /GR-
 /W4
