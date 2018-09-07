@@ -3,7 +3,7 @@
 /MACHINE:x64
 /SUBSYSTEM:WINDOWS
 /DEF
-/NAME:"UE4Editor-HorizonUI-6216.dll"
+/NAME:"UE4Editor-HorizonUI-4285.dll"
 /IGNORE:4221
 /NODEFAULTLIB
 "D:\GameWork\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
@@ -11,4 +11,4 @@
 "D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Development\HorizonUI\Module.HorizonUI.gen.cpp.obj"
 "D:\GameWork\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\HorizonUI\PCLaunch.rc.res"
 "D:\GameWork\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\ModuleVersionResource.rc.inl.res"
-/OUT:"D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-HorizonUI-6216.lib"
+/OUT:"D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-HorizonUI-4285.lib"

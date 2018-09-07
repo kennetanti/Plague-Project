@@ -65,7 +65,7 @@
 "D:\GameWork\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-InputCore.lib"
 "D:\GameWork\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-ImageWrapper.lib"
 "D:\GameWork\Epic Games\UE_4.19\Engine\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-XmlParser.lib"
-/OUT:"D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Binaries\Win64\UE4Editor-HorizonUI-6216.dll"
-/IMPLIB:"D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-HorizonUI-6216.suppressed.lib"
-/PDB:"D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Binaries\Win64\UE4Editor-HorizonUI-6216.pdb"
+/OUT:"D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Binaries\Win64\UE4Editor-HorizonUI-4285.dll"
+/IMPLIB:"D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-HorizonUI-4285.suppressed.lib"
+/PDB:"D:\GameWork\Unreal Project\PlagueProject\Plugins\HorizonUIPlugin\Binaries\Win64\UE4Editor-HorizonUI-4285.pdb"
 /ignore:4078
