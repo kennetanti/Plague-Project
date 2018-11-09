@@ -1,0 +1,15 @@
+Key,Type,SkillName,SkillInput,Video,SkillInfo
+Saber_Base_1,0,連斬,"<img id=""MouseLeft""/><img id=""MouseLeft""/><img id=""MouseLeft""/>",FileMediaSource'/Game/Movies/VS_SkillPreview_SaberBase1.VS_SkillPreview_SaberBase1',"<SkillName>「連斬」</>
+揮動軍刀進行快速的連續斬擊
+命中敵人時會<UpValue>回復耐力</>"
+Saber_Base_2,0,匕首招架,"<img id=""MouseRight""/>",FileMediaSource'/Game/Movies/VS_SkillPreview_SaberBase2.VS_SkillPreview_SaberBase2',"<SkillName>「匕首招架」</>
+使用匕首快速橫掃抵擋襲來的攻擊，反擊時使對方產生<UpValue>暈眩值</>
+並非所有攻擊都能抵擋，遇到較強的攻擊時會有以下效果
+<DownValue>-反擊失敗</> : 雙方攻擊會彈開
+<DownValue>-反擊崩解</> : 反擊失敗並處於低耐力狀態時，將無法抵擋對方攻擊"
+Saber_Base_3,0,迴避,[Space],FileMediaSource'/Game/Movies/VS_SkillPreview_SaberBase3.VS_SkillPreview_SaberBase3',"<SkillName>「迴避」</>
+以靈敏的墊步方式進行迴避
+迴避途中閃避攻擊時會進入<UpValue>完美迴避</>的姿態，並增加<UpValue>突擊能量</>"
+Saber_Base_4,1,強襲突擊,[F],FileMediaSource'/Game/Movies/VS_SkillPreview_SaberBase4.VS_SkillPreview_SaberBase4',"<SkillName>「強襲突擊」</>
+向前急速衝刺並給予貫穿敵人的直線突刺
+施展時消耗所有<UpValue>突擊能量</>，並在命中敵人時回復 <UpValue>10/20/35/50</> 耐力 "

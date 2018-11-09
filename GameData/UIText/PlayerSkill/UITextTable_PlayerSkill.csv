@@ -1,0 +1,86 @@
+Key,Name,Info
+Saber_1Title,強襲,
+Saber_2Title,反制,
+Saber_3Title,靈敏,
+Saber_1_1,韻律斬擊,"基礎 : {BaseLearnState}
+<SkillName>「連斬」「快速刺擊」「迴避連斬」</>命中時<UpValue>+2</>耐力，每次攻擊僅會觸發一次
+
+精通 : {MasterLearnState}
+<SkillName>「連斬」「快速刺擊」「迴避連斬」</>動作中也能回復耐力"
+Saber_1_2,重斬,"基礎 : {BaseLearnState}
+<SkillName>［迴旋重斬」</>攻擊力<UpValue>+20%</>
+
+精通 : {MasterLearnState}
+<SkillName>［迴旋重斬」</>消耗耐力減少為<UpValue>20</>"
+Saber_1_3,迅斬強化,"基礎 : {BaseLearnState}
+<SkillName>「迅斬」</>攻擊力<UpValue>+15%</>
+
+精通 : {MasterLearnState}
+<SkillName>「迅斬」</>消耗耐力減少為<UpValue>25</>"
+Saber_1_4,強襲姿態,"基礎 : {BaseLearnState}
+連斬任意段可銜接<SkillName>「迴旋重斬」</>
+
+精通 : {MasterLearnState}
+在低耐力狀態也可以施展<SkillName>「迴旋重斬」</>"
+Saber_1_5,追擊者,"基礎 : {BaseLearnState}
+被擊退後可施展<SkillName>「迅斬」</>
+
+精通 : {MasterLearnState}
+在低耐力狀態也可以施展<SkillName>「迅斬」</>"
+Saber_1_6,衝鋒陷陣,"基礎 : {BaseLearnState}
+<SkillName>「迅斬」</>命中時<SkillName>「強襲突擊」</>能量+1
+
+精通 : {MasterLearnState}
+<SkillName>「強襲突擊」</>蓄力速度依照當前能量增加"
+Saber_2_1,快速反擊,"基礎 : {BaseLearnState}
+<SkillName>匕首反擊</>起手速度增加
+
+精通 : {MasterLearnState}
+<SkillName>匕首反擊</>起手速度大幅增加"
+Saber_2_2,反制追擊,"基礎 : {BaseLearnState}
+反擊成功後可施展<SkillName>迅斬</>
+
+精通 : {MasterLearnState}
+反擊失敗後可施展<SkillName>迅斬</>"
+Saber_2_3,強力反擊,"基礎 : {BaseLearnState}
+增加<SkillName>匕首反擊</>時成功時造成的暈眩值
+
+精通 : {MasterLearnState}
+<SkillName>匕首反擊</>可直接對防禦中的敵人造成暈眩值"
+Saber_2_4,懲戒,"基礎 : {BaseLearnState}
+使用軍刀命中暈眩中的敵人時額外<UpValue>+5</>耐力
+
+精通 : {MasterLearnState}
+對暈眩中的敵人傷害<UpValue>+20%</>"
+Saber_2_5,抵力,"基礎 : {BaseLearnState}
+反擊失敗時消耗的耐力減少為<UpValue>20</>
+
+精通 : {MasterLearnState}
+低耐力狀態反擊不再崩解，視同反擊失敗"
+Saber_2_6,致命反擊,
+Saber_3_1,輕盈步伐,"基礎 : {BaseLearnState}
+<SkillName>迴避</>消耗耐力減少為<UpValue>13</>
+
+精通 : {MasterLearnState}
+低耐力時也能進行<SkillName>迴避</>"
+Saber_3_2,迴避追擊,"基礎 : {BaseLearnState}
+迴避成功後可施展<SkillName>迅斬</>
+
+精通 : {MasterLearnState}
+<SkillName>迴避斬</>後可施展<SkillName>迅斬</>"
+Saber_3_3,戰鬥呼吸,"基礎 : {BaseLearnState}
+<SkillName>迴避</>成功時<UpValue>+5</>耐力
+
+精通 : {MasterLearnState}
+<SkillName>迴避</>動作中也能回復耐力"
+Saber_3_4,看破,"基礎 : {BaseLearnState}
+<SkillName>迴避</>成功後對攻擊者進行標記，使用<SkillName>迅斬 強襲突擊</>命中標記者能額外<UpValue>+10%</>傷害並消除標記
+
+精通 : {MasterLearnState}
+標記消除時<UpValue>+15</>耐力"
+Saber_3_5,連續迴避,"基礎 : {BaseLearnState}
+<SkillName>迴避</>消耗耐力改減少<UpValue>10</>
+
+精通 : {MasterLearnState}
+連續<SkillName>迴避</>2次後，再次使用<SkillName>迴避</>會直接進入迴避成功姿態"
+Saber_3_6,雷瓦汀之焰,
