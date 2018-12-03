@@ -3,10 +3,10 @@ Saber_1Title,強襲,
 Saber_2Title,反制,
 Saber_3Title,靈敏,
 Saber_1_1,韻律斬擊,"基礎 : {BaseLearnState}
-<SkillName>「連斬」「快速刺擊」「迴避連斬」</>命中時<UpValue>+2</>耐力，每次攻擊僅會觸發一次
+<SkillName>「連斬」「快速刺擊」「迴避連斬」</>命中時<UpValue>+3</>耐力，每次攻擊僅會觸發一次
 
 精通 : {MasterLearnState}
-<SkillName>「連斬」「快速刺擊」「迴避連斬」</>動作中也能回復耐力"
+連斬任意段可銜接<SkillName>「迴旋重斬」</>"
 Saber_1_2,重斬,"基礎 : {BaseLearnState}
 <SkillName>［迴旋重斬」</>攻擊力<UpValue>+20%</>
 
@@ -18,20 +18,20 @@ Saber_1_3,迅斬強化,"基礎 : {BaseLearnState}
 精通 : {MasterLearnState}
 <SkillName>「迅斬」</>消耗耐力減少為<UpValue>25</>"
 Saber_1_4,強襲姿態,"基礎 : {BaseLearnState}
-連斬任意段可銜接<SkillName>「迴旋重斬」</>
+在低耐力狀態也可以施展<SkillName>「迴旋重斬」</>
 
 精通 : {MasterLearnState}
-在低耐力狀態也可以施展<SkillName>「迴旋重斬」</>"
+在低耐力狀態也可以施展<SkillName>「迅斬」</>"
 Saber_1_5,追擊者,"基礎 : {BaseLearnState}
 被擊退後可施展<SkillName>「迅斬」</>
 
 精通 : {MasterLearnState}
-在低耐力狀態也可以施展<SkillName>「迅斬」</>"
+<SkillName>「連斬」「快速刺擊」「迴避連斬」</>動作中也能回復耐力"
 Saber_1_6,衝鋒陷陣,"基礎 : {BaseLearnState}
 <SkillName>「迅斬」</>命中時<SkillName>「強襲突擊」</>能量+1
 
 精通 : {MasterLearnState}
-<SkillName>「強襲突擊」</>蓄力速度依照當前能量增加"
+在低耐力狀態也可以施展<SkillName>「強襲突擊」</>"
 Saber_2_1,快速反擊,"基礎 : {BaseLearnState}
 <SkillName>匕首反擊</>起手速度增加
 
@@ -83,4 +83,8 @@ Saber_3_5,連續迴避,"基礎 : {BaseLearnState}
 
 精通 : {MasterLearnState}
 連續<SkillName>迴避</>2次後，再次使用<SkillName>迴避</>會直接進入迴避成功姿態"
-Saber_3_6,雷瓦汀之焰,
+Saber_3_6,急速突擊,"基礎 : {BaseLearnState}
+<SkillName>「強襲突擊」</>蓄力速度依照當前能量增加
+
+精通 : {MasterLearnState}
+<SkillName>「迴避」</>成功時<SkillName>「強襲突擊」</>能量+2"
