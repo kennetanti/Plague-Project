@@ -5,7 +5,7 @@
 UBTComposite_WeightedRandom::UBTComposite_WeightedRandom(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)// , LeftChildSelectingRate(1.0f)
 {
 	NodeName = "Random Selector";
-	OnNextChild.BindUObject(this, &UBTComposite_WeightedRandom::GetNextChildHandler);
+	//OnNextChild.BindUObject(this, &UBTComposite_WeightedRandom::GetNextChildHandler);
 }
 
 int32 UBTComposite_WeightedRandom::GetNextChildHandler(FBehaviorTreeSearchData& SearchData, int32 PrevChild, EBTNodeResult::Type LastResult) const
