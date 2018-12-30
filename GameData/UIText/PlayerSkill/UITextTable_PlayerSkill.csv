@@ -22,11 +22,11 @@ Saber_1_4,迴旋強化,"基礎 : {BaseLearnState}
 
 精通 : {MasterLearnState}
 <SkillName>「迴旋重斬」</>命中時<UpValue>+1專注</>"
-Saber_1_5,強襲者,"基礎 : {BaseLearnState}
+Saber_1_5,突擊專注,"基礎 : {BaseLearnState}
 每級專注可額外<UpValue>+10%</>爆擊機率
 
 精通 : {MasterLearnState}
-<SkillName>「強襲者」</>施展瞬間，依照消耗量每個專注將回復<UpValue>15</>耐力"
+軍刀基礎攻擊力<UpValue>+10</>"
 Saber_1_6,強襲突擊,"基礎 : {BaseLearnState}
 <SkillName>「迅斬」</>後再接續重攻擊鍵<DownValue>-1專注</>施展<SkillName>「強襲突刺」</>
 
@@ -46,7 +46,7 @@ Saber_2_3,衝擊吸收,"基礎 : {BaseLearnState}
 招架失敗時的耐力消耗<UpValue>-5</>
 
 精通 : {MasterLearnState}
-反擊時額外<UpValue>+10暈眩值</>"
+招架失敗時能造成對方彈刀"
 Saber_2_4,懲戒,"基礎 : {BaseLearnState}
 <SkillName>「終結刺殺」</>攻擊力<UpValue>+50%</>
 
@@ -56,7 +56,7 @@ Saber_2_5,反制專注,"基礎 : {BaseLearnState}
 每級專注可額外<UpValue>-3</>反擊失敗時的耐力消耗
 
 精通 : {MasterLearnState}
-被擊中時不再消耗專注"
+反擊時額外<UpValue>+10暈眩值</>"
 Saber_2_6,瞬時招架,"基礎 : {BaseLearnState}
 任意攻擊動作途中按下特殊攻擊鍵<DownValue>-1專注</>施展<SkillName>「瞬時招架」</>
 
@@ -88,7 +88,7 @@ Saber_3_5,迴避專注,"基礎 : {BaseLearnState}
 精通 : {MasterLearnState}
 可以連續進行2次<SkillName>迴避</>"
 Saber_3_6,靈敏迴避,"基礎 : {BaseLearnState}
-任意攻擊動作途中按下迴避鍵<DownValue>-1專注</>並施展<SkillName>「靈敏迴避」</>
+任意攻擊動作途中按下 + 迴避鍵<DownValue>-1專注</>並施展<SkillName>「靈敏迴避」</>
 
 精通 : {MasterLearnState}
-<SkillName>「靈敏迴避」</>成功時額外獲得<SkillName>「自動迴避」</>增益"
+<SkillName>「迴避」</>成功時在<UpValue>5秒內回覆80生命值</>"
